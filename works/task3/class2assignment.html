@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .children{
+                font-size: 2rem;
+                transition: transform .2s;
+            }
+            .children:hover{
+                cursor: pointer;
+                background-color: rgba(1,2,3,0.5);
+                transform: scale(1.5);
+            }
+            
+            #first{
+                color: aqua;
+            }
+            #second{
+                color:chartreuse;
+            }
+            #third{
+                color:chocolate;
+            }
+            #div4{
+                color:darkgoldenrod;
+            }
+            #forth{
+                color:darkorchid;
+            }
+            #fifth{
+                margin: auto;
+            }
+
+            .children {
+                display: inline-block;
+                height: 200px;
+                width: 200px;
+                font-size: 12rem;
+                text-align: center;
+            }
+
+            #parent{      
+                text-align: center;          
+                position: absolute;
+                margin: auto;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: 200px;
+            }
+
+        </style>
+    </head>
+    <body>
+      
+        <div id="parent">
+                <div class="children" id = "first"> D </div>
+                <div class="children" id = "second"> i </div>
+                <div class="children" id = "third"> v </div>
+                <div class="children" id = "forth"> y </div>
+                <div class="children" id = "fifth"> a </div>
+        </div>
+
+    </body>
+</html>

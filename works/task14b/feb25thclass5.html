@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        /* body {
+            background-color: burlywood;
+         
+        } */
+      
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h2>Generate Random Number</h2>
+        <input id="num1" placeholder="Enter first number">
+        <input id="num2" placeholder="Enter second number">
+        <br><br>
+        <button onclick="generateRandom()">Generate Random Value</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function generateRandom() {
+            let num1 = parseInt(document.getElementById("num1").value);
+            let num2 = parseInt(document.getElementById("num2").value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("result").innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            let min = Math.min(num1, num2);
+            let max = Math.max(num1, num2);
+            let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+
+            document.getElementById("result").innerText = `Random number is: ${randomNum}`;
+        }
+
+        setTimeout(() => {
+            document.getElementById("container").style.display = "none";
+
+            setTimeout(() => {
+                document.getElementById("container").style.display = "block";
+                document.getElementById("result").innerText = ""; 
+                document.getElementById("num1").value = "";
+                document.getElementById("num2").value = "";
+            }, 5000);
+        }, 5000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: "Verdana", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4fafd; /* Lightest Color */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .header_section {
+        text-align: center;
+        padding: 25px;
+        background: linear-gradient(to right, #e0f7fa, #b2ebf2, #80deea);
+        color: #004d66;
+        font-weight: bold;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+      }
+
+      .projects_area {
+        text-align: center;
+        padding: 15px;
+        background: #e0f2f1;
+      }
+
+      #searchBox {
+        padding: 8px;
+        width: 40%;
+        border: 1px solid #00838f;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .buttons_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .buttons_wrapper button {
+        background: linear-gradient(to right, #b2ebf2, #80deea);
+        color: #004d66;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .buttons_wrapper button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .content_wrapper {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .display_section {
+        width: 80%;
+        padding: 20px;
+        background: linear-gradient(to bottom, #e0f2f1, #b2dfdb);
+        margin: 20px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      #display_frame {
+        width: 100%;
+        height: 80vh;
+        border: 1px solid #26a69a;
+        border-radius: 4px;
+      }
+
+      .footer_section {
+        text-align: center;
+        padding: 15px;
+        background: linear-gradient(to right, #80deea, #26c6da);
+        color: #ffffff;
+        box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.15);
+        margin-top: auto;
+      }
+
+      .footer_section a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .footer_section a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header_section">My Projects</div>
+
+    <div class="projects_area">
+      <input type="text" id="searchBox" placeholder="Search projects..." />
+      <div class="buttons_wrapper" id="projectsWrapper"></div>
+    </div>
+
+    <div class="content_wrapper">
+      <div class="display_section">
+        <iframe id="display_frame" src="works/landing.html"></iframe>
+      </div>
+    </div>
+
+    <div class="footer_section">
+      Created by <strong> Divya</strong> | Contact:
+      <a href="mailto:your.email@example.com">djarugul@aum.edu</a>
+    </div>
+
+    <script>
+      const projectsList = {
+        project_A: { title: "task 1", url: "works/task1/class1index.html" },
+        project_B: { title: "task 2", url: "works/task2/dashboard.html" },
+        project_C: { title: "task 3", url: "works/task3/class2assignment.html" },
+        project_D: { title: "task 4", url: "works/task4/class33divya.html" },
+        project_E: { title: "task 5", url: "works/task5/task5.html" },
+        project_F: { title: "task 7", url: "works/task7/task7.html" },
+        project_G: { title: "task 8", url: "works/task8/assignmentfeb4.html" },
+        project_H: { title: "task 9", url: "works/task9/feb6thassign-1.html" },
+        project_I: { title: "task 10", url: "works/task10/feb6thass2.html" },
+        project_J: { title: "task 11", url: "works/task11/classfeb11.html" },
+        project_K: { title: "task 12", url: "works/task12/feb13thclass2.html" },
+        project_L: { title: "task 13", url: "works/task13/feb18thclass3.html" },
+        project_M: { title: "task 14", url: "works/task14/feb20class1.html" },
+        project_N: { title: "task 14B", url: "works/task14b/feb25thclass5.html" },
+        project_O: { title: "task 15", url: "works/task15/march11thclass3.html" },
+      };
+
+      const projectWrapper = document.getElementById("projectsWrapper");
+      const displayFrame = document.getElementById("display_frame");
+      const searchField = document.getElementById("searchBox");
+
+      function createProjectButtons(filteredProjects) {
+        projectWrapper.innerHTML = "";
+        Object.values(filteredProjects).forEach((project) => {
+          const button = document.createElement("button");
+          button.textContent = project.title;
+          button.addEventListener("click", () => (displayFrame.src = project.url));
+          projectWrapper.appendChild(button);
+        });
+      }
+
+      createProjectButtons(projectsList);
+
+      searchField.addEventListener("input", () => {
+        const query = searchField.value.toLowerCase();
+        const filteredProjects = Object.fromEntries(
+          Object.entries(projectsList).filter(([_, project]) =>
+            project.title.toLowerCase().includes(query)
+          )
+        );
+        createProjectButtons(filteredProjects);
+      });
+    </script>
+  </body>
+</html>
